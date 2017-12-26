@@ -1,0 +1,46 @@
+swagger: '2.0'
+schemes:
+  - https
+host: mapitin.fongshway.com
+basePath: /api/v1/
+info:
+  description: |
+    MapItin API.
+  title: MapItin
+  version: v1
+  x-providerName: fongshway.com
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      description: Get user info
+      parameters:
+        - description: User email address
+          in: query
+          name: email
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/users'
+        '422':
+          description: UNPROCESSABLE ENTITY
+    post:
+      description: Add user
+
+definitions:
+  users:
+    items:
+      properties:
+        'id':
+          type: integer
+        'username':
+          type: string
+        'email':
+          type: string
+      type: object
+    type: array
