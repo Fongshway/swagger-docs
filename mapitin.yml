@@ -31,8 +31,26 @@ paths:
           description: UNPROCESSABLE ENTITY
     post:
       description: Add user
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/emailsPost'
+      responses:
+        '201':
+          description: Created
+        '422':
+          description: UNPROCESSABLE ENTITY
 
 definitions:
+  usersPost:
+    properties:
+      'username':
+        type: string
+      'email':
+        type: string
+    type: object
   users:
     items:
       properties:
